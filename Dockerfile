@@ -1,7 +1,7 @@
 FROM python:3.10-slim as base
 
 FROM base as builder
-RUN apt-get update && apt-get install -y git 
+RUN apt-get update && apt-get install -y git build-essential
 # there are no wheels for some packages (geventhttpclient?) for arm64/aarch64, so we need some build dependencies there
 RUN if [ -n "$(arch | grep 'arm64\|aarch64')" ]; then apt install -y --no-install-recommends gcc python3-dev; fi
 RUN python -m venv /opt/venv
