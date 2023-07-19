@@ -10,6 +10,7 @@ COPY . /build
 RUN pip install /build/
 
 FROM base
+RUN apt-get update && apt-get install -y gdb
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 # turn off python output buffering
