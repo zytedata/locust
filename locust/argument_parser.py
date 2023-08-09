@@ -564,6 +564,13 @@ Only the LOCUSTFILE (-f option) needs to be specified when starting a Worker, si
         env_var="LOCUST_STOP_TIMEOUT",
     )
     other_group.add_argument(
+        "--aggregate-for-broad-crawl",
+        action="store_true",
+        default=False,
+        dest="aggregate_for_broad_crawl",
+        help="Enable aggregation in reporting for broad number of URIs",
+    )
+    other_group.add_argument(
         "--equal-weights",
         action="store_true",
         default=False,

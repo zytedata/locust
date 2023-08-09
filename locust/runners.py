@@ -131,6 +131,8 @@ class Runner:
 
         # set up event listeners for recording requests
         def on_request(request_type, name, response_time, response_length, exception=None, **_kwargs):
+            if self.environment.parsed_options.aggregate_for_broad_crawl:
+                name = "[request]"
             self.stats.log_request(request_type, name, response_time, response_length)
             if exception:
                 self.stats.log_error(request_type, name, exception)
